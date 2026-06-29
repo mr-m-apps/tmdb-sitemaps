@@ -2,32 +2,29 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const { createGunzip } = require('zlib');
-const { pipeline } = require('stream');
-const { promisify } = require('util');
-const streamPipeline = promisify(pipeline);
 
 const SITEMAP_LIMIT = 45000;
 const BASE_URL = 'https://files.tmdb.org/p/exports';
 
 const SITES = [
-    {
+  {
     domain: 'aflampro.pp.ua',
     baseUrl: 'https://aflampro.pp.ua',
     routes: {
-      movie: 'titles/movie/{id}',
-      tv: 'titles/tv/{id}',
-      person: 'titles/person/{id}'
+      movie: '/titles/movie/{id}',
+      tv: '/titles/tv/{id}',
+      person: '/titles/person/{id}',
     },
     staticPages: [
       { url: '/', priority: '1.0', changefreq: 'daily' },
       { url: '/browse', priority: '0.9', changefreq: 'daily' },
-      { url: '/favorite', priority: '0.8', changefreq: 'weekly' },
       { url: '/search', priority: '0.8', changefreq: 'daily' },
-      { url: '/legal', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/privacy', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/terms', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/dmca', priority: '0.5', changefreq: 'monthly' },
+      { url: '/favorite', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
+      { url: '/legal', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/privacy', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/terms', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/dmca', priority: '0.4', changefreq: 'monthly' },
       { url: '/titles/category/movies/-1', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/-2', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/28', priority: '0.7', changefreq: 'weekly' },
@@ -57,27 +54,27 @@ const SITES = [
       { url: '/titles/category/tv/9648', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/category/tv/10765', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/category/tv/10768', priority: '0.7', changefreq: 'weekly' },
-      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' }
-    ]
-  }, 
+      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' },
+    ],
+  },
   {
     domain: 'aflam-hub.vercel.app',
     baseUrl: 'https://aflam-hub.vercel.app',
     routes: {
-      movie: 'titles/movie/{id}',
-      tv: 'titles/tv/{id}',
-      person: 'titles/person/{id}'
+      movie: '/titles/movie/{id}',
+      tv: '/titles/tv/{id}',
+      person: '/titles/person/{id}',
     },
     staticPages: [
       { url: '/', priority: '1.0', changefreq: 'daily' },
       { url: '/browse', priority: '0.9', changefreq: 'daily' },
-      { url: '/favorite', priority: '0.8', changefreq: 'weekly' },
       { url: '/search', priority: '0.8', changefreq: 'daily' },
-      { url: '/legal', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/privacy', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/terms', priority: '0.5', changefreq: 'monthly' },
-      { url: '/legal/dmca', priority: '0.5', changefreq: 'monthly' },
+      { url: '/favorite', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
+      { url: '/legal', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/privacy', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/terms', priority: '0.4', changefreq: 'monthly' },
+      { url: '/legal/dmca', priority: '0.4', changefreq: 'monthly' },
       { url: '/titles/category/movies/-1', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/-2', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/28', priority: '0.7', changefreq: 'weekly' },
@@ -107,9 +104,9 @@ const SITES = [
       { url: '/titles/category/tv/9648', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/category/tv/10765', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/category/tv/10768', priority: '0.7', changefreq: 'weekly' },
-      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' }
-    ]
-  }
+      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' },
+    ],
+  },
 ];
 
 function getToday() {
@@ -125,171 +122,160 @@ async function downloadAndParse(fileName) {
   const response = await axios.get(url, { responseType: 'stream' });
   const gunzip = createGunzip();
   const stream = response.data.pipe(gunzip);
-  
+
   let data = '';
   for await (const chunk of stream) {
     data += chunk.toString('utf8');
   }
 
-  return data.split('\n')
-    .filter(line => line.trim())
-    .map(line => JSON.parse(line));
+  return data
+    .split('\n')
+    .filter((line) => line.trim())
+    .map((line) => JSON.parse(line));
 }
 
-function generateSiteMapXML(items, baseUrl, routePattern) {
-  const urls = items.map(item => {
-    const url = baseUrl + routePattern.replace('{id}', item.id);
-    const priority = item.popularity ? 0.8 : 0.5;
-    return `  <url>
-    <loc>${url}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
-  }).join('\n');
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
+function getPriority(popularity) {
+  if (popularity >= 100) return '0.9';
+  if (popularity >= 20) return '0.7';
+  return '0.5';
 }
 
-function generateStaticPagesSitemap(staticPages, baseUrl) {
-  const urls = staticPages.map(page => {
-    return `  <url>
-    <loc>${baseUrl}${page.url}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>${page.changefreq || 'weekly'}</changefreq>
-    <priority>${page.priority || '0.5'}</priority>
-  </url>`;
-  }).join('\n');
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
+function escapeXml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }
 
-function generateSitemapIndex(sitemapFiles, domain, baseUrl) {
-  const urls = sitemapFiles.map(file => {
-    const filePath = file.replace(domain + '/', '');
-    return `  <sitemap>
-    <loc>${baseUrl}/api/sitemap/${filePath}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-  </sitemap>`;
-  }).join('\n');
+function generateSitemapXML(items, baseUrl, routePattern) {
+  const now = new Date().toISOString();
+  const urls = items
+    .map((item) => {
+      const loc = escapeXml(baseUrl + routePattern.replace('{id}', item.id));
+      const priority = getPriority(item.popularity || 0);
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+    })
+    .join('\n');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</sitemapindex>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+}
+
+function generateStaticSitemap(staticPages, baseUrl) {
+  const now = new Date().toISOString();
+  const urls = staticPages
+    .map((page) => {
+      const loc = escapeXml(baseUrl + page.url);
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>${page.changefreq || 'weekly'}</changefreq>\n    <priority>${page.priority || '0.5'}</priority>\n  </url>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+}
+
+function generateSitemapIndex(sitemapFiles, baseUrl) {
+  const now = new Date().toISOString();
+  const sitemaps = sitemapFiles
+    .map((file) => {
+      const loc = escapeXml(`${baseUrl}/api/sitemap/${file}`);
+      return `  <sitemap>\n    <loc>${loc}</loc>\n    <lastmod>${now}</lastmod>\n  </sitemap>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemaps}\n</sitemapindex>`;
+}
+
+function ensureDir(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
 }
 
 async function main() {
   const today = getToday();
-  
+
   const files = {
     movie: `movie_ids_${today}.json.gz`,
     tv: `tv_series_ids_${today}.json.gz`,
     person: `person_ids_${today}.json.gz`,
-    company: `production_company_ids_${today}.json.gz`
   };
-  
-  let data = {};
+
+  const data = {};
   for (const [key, fileName] of Object.entries(files)) {
     try {
-      console.log(`- تحميل ${key}...`);
+      console.log(`تحميل ${key}...`);
       data[key] = await downloadAndParse(fileName);
-      console.log(`تم تحميل ${data[key].length} عنصر`);
+      console.log(`✓ ${key}: ${data[key].length} عنصر`);
     } catch (error) {
-      console.error(`فشل تحميل ${key}:`, error.message);
+      console.error(`✗ فشل تحميل ${key}: ${error.message}`);
       data[key] = [];
     }
   }
-  
+
   const sitemapsDir = path.join(process.cwd(), 'sitemaps');
-  if (!fs.existsSync(sitemapsDir)) {
-    fs.mkdirSync(sitemapsDir);
-  }
-  
+  ensureDir(sitemapsDir);
+
   for (const site of SITES) {
-    console.log(`\n معالجة الموقع: ${site.domain}`);
-    
+    console.log(`\nمعالجة: ${site.domain}`);
+
     const siteDir = path.join(sitemapsDir, site.domain);
-    if (!fs.existsSync(siteDir)) {
-      fs.mkdirSync(siteDir);
-    }
-    
+    ensureDir(siteDir);
+
     const allSitemapFiles = [];
     const config = {
       domain: site.domain,
       baseUrl: site.baseUrl,
-      routes: site.routes,
       generatedAt: new Date().toISOString(),
       sitemaps: {},
-      staticPages: site.staticPages || []
     };
-    
+
     if (site.staticPages && site.staticPages.length > 0) {
-      console.log(`الصفحات الثابتة: ${site.staticPages.length} صفحة`);
-      
-      const staticXml = generateStaticPagesSitemap(site.staticPages, site.baseUrl);
-      const staticFilePath = path.join(siteDir, 'sitemap-static.xml');
-      fs.writeFileSync(staticFilePath, staticXml, 'utf8');
-      console.log(`sitemap-static.xml تم إنشاؤه (${site.staticPages.length} رابط)`);
-      
-      allSitemapFiles.push(`${site.domain}/sitemap-static.xml`);
+      const xml = generateStaticSitemap(site.staticPages, site.baseUrl);
+      fs.writeFileSync(path.join(siteDir, 'sitemap-static.xml'), xml, 'utf8');
+      console.log(`✓ sitemap-static.xml (${site.staticPages.length} رابط)`);
+      allSitemapFiles.push('sitemap-static.xml');
       config.sitemaps.static = ['sitemap-static.xml'];
     }
 
     for (const [category, items] of Object.entries(data)) {
-      if (items.length === 0) continue;
-      
-      console.log(`فئة ${category}: ${items.length} عنصر`);
-      
+      const route = site.routes[category];
+      if (!route || items.length === 0) continue;
+
       const categoryDir = path.join(siteDir, category);
-      if (!fs.existsSync(categoryDir)) {
-        fs.mkdirSync(categoryDir);
-      }
-    
+      ensureDir(categoryDir);
+
       const chunks = [];
       for (let i = 0; i < items.length; i += SITEMAP_LIMIT) {
         chunks.push(items.slice(i, i + SITEMAP_LIMIT));
       }
-      
-      console.log(`سيتم إنشاء ${chunks.length} ملف Sitemap`);
-      
-      const sitemapFiles = [];
+
+      const categoryFiles = [];
       for (let i = 0; i < chunks.length; i++) {
-        const chunk = chunks[i];
         const fileName = `sitemap-${category}-${i + 1}.xml`;
-        const filePath = path.join(categoryDir, fileName);
-      
-        const xml = generateSiteMapXML(
-          chunk,
-          site.baseUrl,
-          site.routes[category] || `/${category}/{id}`
-        );
-        
-        fs.writeFileSync(filePath, xml, 'utf8');
-        console.log(`${fileName} (${chunk.length} رابط)`);
-        
-        sitemapFiles.push(`${site.domain}/${category}/${fileName}`);
-        allSitemapFiles.push(`${site.domain}/${category}/${fileName}`);
+        const xml = generateSitemapXML(chunks[i], site.baseUrl, route);
+        fs.writeFileSync(path.join(categoryDir, fileName), xml, 'utf8');
+        console.log(`✓ ${category}/${fileName} (${chunks[i].length} رابط)`);
+        categoryFiles.push(`${category}/${fileName}`);
+        allSitemapFiles.push(`${category}/${fileName}`);
       }
-      
-      config.sitemaps[category] = sitemapFiles;
+
+      config.sitemaps[category] = categoryFiles;
     }
-  
-    const indexXml = generateSitemapIndex(allSitemapFiles, site.domain, site.baseUrl);
-    const indexFilePath = path.join(siteDir, 'sitemap.xml');
-    fs.writeFileSync(indexFilePath, indexXml, 'utf8');
-    console.log(`sitemap.xml تم إنشاؤه (يحتوي على ${allSitemapFiles.length} ملف)`);
-    const configPath = path.join(siteDir, 'config.json');
-    fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
-    console.log(`config.json تم إنشاؤه`);
+
+    const indexXml = generateSitemapIndex(allSitemapFiles, site.baseUrl);
+    fs.writeFileSync(path.join(siteDir, 'sitemap.xml'), indexXml, 'utf8');
+    console.log(`✓ sitemap.xml (${allSitemapFiles.length} ملف)`);
+
+    fs.writeFileSync(
+      path.join(siteDir, 'config.json'),
+      JSON.stringify(config, null, 2),
+      'utf8'
+    );
+    console.log(`✓ config.json`);
   }
-  
-  console.log('\n تم الانتهاء بنجاح!');
+
+  console.log('\nتم الانتهاء بنجاح!');
 }
 
 main().catch(console.error);
