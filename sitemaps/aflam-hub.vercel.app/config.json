@@ -1,0 +1,367 @@
+{
+  "domain": "aflam-hub.vercel.app",
+  "baseUrl": "https://aflam-hub.vercel.app",
+  "routes": {
+    "movie": "titles/movie/{id}",
+    "tv": "titles/tv/{id}",
+    "person": "titles/person/{id}",
+    "company": "titles/company/{id}"
+  },
+  "generatedAt": "2026-06-29T16:52:17.687Z",
+  "sitemaps": {
+    "static": [
+      "sitemap-static.xml"
+    ],
+    "movie": [
+      "aflam-hub.vercel.app/movie/sitemap-movie-1.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-2.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-3.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-4.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-5.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-6.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-7.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-8.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-9.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-10.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-11.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-12.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-13.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-14.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-15.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-16.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-17.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-18.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-19.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-20.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-21.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-22.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-23.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-24.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-25.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-26.xml",
+      "aflam-hub.vercel.app/movie/sitemap-movie-27.xml"
+    ],
+    "tv": [
+      "aflam-hub.vercel.app/tv/sitemap-tv-1.xml",
+      "aflam-hub.vercel.app/tv/sitemap-tv-2.xml",
+      "aflam-hub.vercel.app/tv/sitemap-tv-3.xml",
+      "aflam-hub.vercel.app/tv/sitemap-tv-4.xml",
+      "aflam-hub.vercel.app/tv/sitemap-tv-5.xml",
+      "aflam-hub.vercel.app/tv/sitemap-tv-6.xml"
+    ],
+    "person": [
+      "aflam-hub.vercel.app/person/sitemap-person-1.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-2.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-3.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-4.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-5.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-6.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-7.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-8.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-9.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-10.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-11.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-12.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-13.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-14.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-15.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-16.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-17.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-18.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-19.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-20.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-21.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-22.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-23.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-24.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-25.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-26.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-27.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-28.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-29.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-30.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-31.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-32.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-33.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-34.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-35.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-36.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-37.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-38.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-39.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-40.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-41.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-42.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-43.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-44.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-45.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-46.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-47.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-48.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-49.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-50.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-51.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-52.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-53.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-54.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-55.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-56.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-57.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-58.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-59.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-60.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-61.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-62.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-63.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-64.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-65.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-66.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-67.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-68.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-69.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-70.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-71.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-72.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-73.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-74.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-75.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-76.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-77.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-78.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-79.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-80.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-81.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-82.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-83.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-84.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-85.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-86.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-87.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-88.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-89.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-90.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-91.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-92.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-93.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-94.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-95.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-96.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-97.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-98.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-99.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-100.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-101.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-102.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-103.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-104.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-105.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-106.xml",
+      "aflam-hub.vercel.app/person/sitemap-person-107.xml"
+    ],
+    "company": [
+      "aflam-hub.vercel.app/company/sitemap-company-1.xml",
+      "aflam-hub.vercel.app/company/sitemap-company-2.xml",
+      "aflam-hub.vercel.app/company/sitemap-company-3.xml",
+      "aflam-hub.vercel.app/company/sitemap-company-4.xml",
+      "aflam-hub.vercel.app/company/sitemap-company-5.xml",
+      "aflam-hub.vercel.app/company/sitemap-company-6.xml"
+    ]
+  },
+  "staticPages": [
+    {
+      "url": "/",
+      "priority": "1.0",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/browse",
+      "priority": "0.9",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/favorite",
+      "priority": "0.8",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/search",
+      "priority": "0.8",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/titles/channels",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/legal",
+      "priority": "0.5",
+      "changefreq": "monthly"
+    },
+    {
+      "url": "/legal/privacy",
+      "priority": "0.5",
+      "changefreq": "monthly"
+    },
+    {
+      "url": "/legal/terms",
+      "priority": "0.5",
+      "changefreq": "monthly"
+    },
+    {
+      "url": "/legal/dmca",
+      "priority": "0.5",
+      "changefreq": "monthly"
+    },
+    {
+      "url": "/titles/category/movies/-1",
+      "priority": "0.8",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/titles/category/movies/-2",
+      "priority": "0.8",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/titles/category/movies/28",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/12",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/16",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/35",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/80",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/18",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/10751",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/14",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/36",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/27",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/9648",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/10749",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/878",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/53",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/10752",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/movies/37",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/-1",
+      "priority": "0.8",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/titles/category/tv/-2",
+      "priority": "0.8",
+      "changefreq": "daily"
+    },
+    {
+      "url": "/titles/category/tv/10759",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/16",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/35",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/80",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/18",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/10751",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/9648",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/10765",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/10768",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    },
+    {
+      "url": "/titles/category/tv/37",
+      "priority": "0.7",
+      "changefreq": "weekly"
+    }
+  ]
+}
