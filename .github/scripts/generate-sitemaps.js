@@ -10,56 +10,74 @@ const SITEMAP_LIMIT = 45000;
 const BASE_URL = 'https://files.tmdb.org/p/exports';
 
 const SITES = [
-  {
+    {
     domain: 'aflampro.pp.ua',
     baseUrl: 'https://aflampro.pp.ua',
     routes: {
-      movie: '/movie/{id}'
-    },
-    staticPages: [
-      { url: '/', priority: '1.0', changefreq: 'daily' },
-      { url: '/?section=trending', priority: '0.9', changefreq: 'daily' },
-      { url: '/?section=popular', priority: '0.9', changefreq: 'daily' },
-      { url: '/?section=top_rated', priority: '0.9', changefreq: 'daily' },
-      { url: '/?section=now_playing', priority: '0.8', changefreq: 'daily' },
-      { url: '/?section=upcoming', priority: '0.8', changefreq: 'daily' },
-      { url: '/?section=action', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=comedy', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=horror', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=animation', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=scifi', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=romance', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=drama', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=thriller', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=family', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=documentary', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=war', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=arabic', priority: '0.8', changefreq: 'daily' },
-      { url: '/?section=foreign', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=indian', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=korean', priority: '0.7', changefreq: 'weekly' },
-      { url: '/?section=japanese', priority: '0.7', changefreq: 'weekly' }
-    ]
-  },
-  {
-    domain: 'aflam-hub.vercel.app',
-    baseUrl: 'https://aflam-hub.vercel.app',
-    routes: {
       movie: 'titles/movie/{id}',
       tv: 'titles/tv/{id}',
-      person: 'titles/person/{id}',
-      company: 'titles/company/{id}'
+      person: 'titles/person/{id}'
     },
     staticPages: [
       { url: '/', priority: '1.0', changefreq: 'daily' },
       { url: '/browse', priority: '0.9', changefreq: 'daily' },
       { url: '/favorite', priority: '0.8', changefreq: 'weekly' },
       { url: '/search', priority: '0.8', changefreq: 'daily' },
-      { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
       { url: '/legal', priority: '0.5', changefreq: 'monthly' },
       { url: '/legal/privacy', priority: '0.5', changefreq: 'monthly' },
       { url: '/legal/terms', priority: '0.5', changefreq: 'monthly' },
       { url: '/legal/dmca', priority: '0.5', changefreq: 'monthly' },
+      { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/-1', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/movies/-2', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/movies/28', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/12', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/16', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/35', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/80', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/18', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10751', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/14', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/36', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/27', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/9648', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10749', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/878', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/53', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10752', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/37', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/-1', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/tv/-2', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/tv/10759', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/16', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/35', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/80', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/18', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10751', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/9648', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10765', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10768', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' }
+    ]
+  }, 
+  {
+    domain: 'aflam-hub.vercel.app',
+    baseUrl: 'https://aflam-hub.vercel.app',
+    routes: {
+      movie: 'titles/movie/{id}',
+      tv: 'titles/tv/{id}',
+      person: 'titles/person/{id}'
+    },
+    staticPages: [
+      { url: '/', priority: '1.0', changefreq: 'daily' },
+      { url: '/browse', priority: '0.9', changefreq: 'daily' },
+      { url: '/favorite', priority: '0.8', changefreq: 'weekly' },
+      { url: '/search', priority: '0.8', changefreq: 'daily' },
+      { url: '/legal', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/privacy', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/terms', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/dmca', priority: '0.5', changefreq: 'monthly' },
+      { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/category/movies/-1', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/-2', priority: '0.8', changefreq: 'daily' },
       { url: '/titles/category/movies/28', priority: '0.7', changefreq: 'weekly' },
