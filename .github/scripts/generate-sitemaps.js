@@ -135,9 +135,11 @@ async function downloadAndParse(fileName) {
 }
 
 function getPriority(popularity) {
-  if (popularity >= 100) return '0.9';
-  if (popularity >= 20) return '0.7';
-  return '0.5';
+  if (popularity >= 50)  return '0.9';
+  if (popularity >= 10)  return '0.8';
+  if (popularity >= 1)   return '0.7';
+  if (popularity >= 0.1) return '0.6';
+  return '0.7';
 }
 
 function escapeXml(str) {
