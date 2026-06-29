@@ -6,29 +6,94 @@ const { pipeline } = require('stream');
 const { promisify } = require('util');
 const streamPipeline = promisify(pipeline);
 
-const SITEMAP_LIMIT = 40000;
+const SITEMAP_LIMIT = 45000;
 const BASE_URL = 'https://files.tmdb.org/p/exports';
 
 const SITES = [
   {
-    domain: 'example1.com',
-    baseUrl: 'https://example1.com',
+    domain: 'aflampro.pp.ua',
+    baseUrl: 'https://aflampro.pp.ua',
     routes: {
       movie: '/movie/{id}',
       tv: '/tv/{id}',
       person: '/person/{id}',
       company: '/company/{id}'
-    }
+    },
+    staticPages: [
+      { url: '/', priority: '1.0', changefreq: 'daily' },
+      { url: '/?section=trending', priority: '0.9', changefreq: 'daily' },
+      { url: '/?section=popular', priority: '0.9', changefreq: 'daily' },
+      { url: '/?section=top_rated', priority: '0.9', changefreq: 'daily' },
+      { url: '/?section=now_playing', priority: '0.8', changefreq: 'daily' },
+      { url: '/?section=upcoming', priority: '0.8', changefreq: 'daily' },
+      { url: '/?section=action', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=comedy', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=horror', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=animation', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=scifi', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=romance', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=drama', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=thriller', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=family', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=documentary', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=war', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=arabic', priority: '0.8', changefreq: 'daily' },
+      { url: '/?section=foreign', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=indian', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=korean', priority: '0.7', changefreq: 'weekly' },
+      { url: '/?section=japanese', priority: '0.7', changefreq: 'weekly' }
+    ]
   },
   {
-    domain: 'example2.com',
-    baseUrl: 'https://example2.com',
+    domain: 'aflam-hub.vercel.app',
+    baseUrl: 'https://aflam-hub.vercel.app',
     routes: {
-      movie: '/film/{id}',
-      tv: '/series/{id}',
-      person: '/actor/{id}',
-      company: '/studio/{id}'
-    }
+      movie: 'titles/movie/{id}',
+      tv: 'titles/tv/{id}',
+      person: 'titles/person/{id}',
+      company: 'titles/company/{id}'
+    },
+    staticPages: [
+      { url: '/', priority: '1.0', changefreq: 'daily' },
+      { url: '/browse', priority: '0.9', changefreq: 'daily' },
+      { url: '/favorite', priority: '0.8', changefreq: 'weekly' },
+      { url: '/search', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
+      { url: '/legal', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/privacy', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/terms', priority: '0.5', changefreq: 'monthly' },
+      { url: '/legal/dmca', priority: '0.5', changefreq: 'monthly' },
+      { url: '/titles/category/movies/-1', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/movies/-2', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/movies/28', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/12', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/16', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/35', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/80', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/18', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10751', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/14', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/36', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/27', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/9648', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10749', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/878', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/53', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/10752', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/movies/37', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/-1', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/tv/-2', priority: '0.8', changefreq: 'daily' },
+      { url: '/titles/category/tv/10759', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/16', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/35', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/80', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/18', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10751', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/9648', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10765', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/10768', priority: '0.7', changefreq: 'weekly' },
+      { url: '/titles/category/tv/37', priority: '0.7', changefreq: 'weekly' }
+    ]
   }
 ];
 
@@ -73,6 +138,22 @@ ${urls}
 </urlset>`;
 }
 
+function generateStaticPagesSitemap(staticPages, baseUrl) {
+  const urls = staticPages.map(page => {
+    return `  <url>
+    <loc>${baseUrl}${page.url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>${page.changefreq || 'weekly'}</changefreq>
+    <priority>${page.priority || '0.5'}</priority>
+  </url>`;
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+}
+
 function generateSitemapIndex(sitemapFiles, domain, baseUrl) {
   const urls = sitemapFiles.map(file => {
     const filePath = file.replace(domain + '/', '');
@@ -101,11 +182,11 @@ async function main() {
   let data = {};
   for (const [key, fileName] of Object.entries(files)) {
     try {
-      console.log(`  - تحميل ${key}...`);
+      console.log(`- تحميل ${key}...`);
       data[key] = await downloadAndParse(fileName);
-      console.log(` تم تحميل ${data[key].length} عنصر`);
+      console.log(`تم تحميل ${data[key].length} عنصر`);
     } catch (error) {
-      console.error(` فشل تحميل ${key}:`, error.message);
+      console.error(`فشل تحميل ${key}:`, error.message);
       data[key] = [];
     }
   }
@@ -129,13 +210,26 @@ async function main() {
       baseUrl: site.baseUrl,
       routes: site.routes,
       generatedAt: new Date().toISOString(),
-      sitemaps: {}
+      sitemaps: {},
+      staticPages: site.staticPages || []
     };
-  
+    
+    if (site.staticPages && site.staticPages.length > 0) {
+      console.log(`الصفحات الثابتة: ${site.staticPages.length} صفحة`);
+      
+      const staticXml = generateStaticPagesSitemap(site.staticPages, site.baseUrl);
+      const staticFilePath = path.join(siteDir, 'sitemap-static.xml');
+      fs.writeFileSync(staticFilePath, staticXml, 'utf8');
+      console.log(`sitemap-static.xml تم إنشاؤه (${site.staticPages.length} رابط)`);
+      
+      allSitemapFiles.push(`${site.domain}/sitemap-static.xml`);
+      config.sitemaps.static = ['sitemap-static.xml'];
+    }
+
     for (const [category, items] of Object.entries(data)) {
       if (items.length === 0) continue;
       
-      console.log(` فئة ${category}: ${items.length} عنصر`);
+      console.log(`فئة ${category}: ${items.length} عنصر`);
       
       const categoryDir = path.join(siteDir, category);
       if (!fs.existsSync(categoryDir)) {
@@ -147,7 +241,7 @@ async function main() {
         chunks.push(items.slice(i, i + SITEMAP_LIMIT));
       }
       
-      console.log(` سيتم إنشاء ${chunks.length} ملف Sitemap`);
+      console.log(`سيتم إنشاء ${chunks.length} ملف Sitemap`);
       
       const sitemapFiles = [];
       for (let i = 0; i < chunks.length; i++) {
@@ -162,7 +256,7 @@ async function main() {
         );
         
         fs.writeFileSync(filePath, xml, 'utf8');
-        console.log(` ${fileName} (${chunk.length} رابط)`);
+        console.log(`${fileName} (${chunk.length} رابط)`);
         
         sitemapFiles.push(`${site.domain}/${category}/${fileName}`);
         allSitemapFiles.push(`${site.domain}/${category}/${fileName}`);
@@ -170,15 +264,14 @@ async function main() {
       
       config.sitemaps[category] = sitemapFiles;
     }
-    
+  
     const indexXml = generateSitemapIndex(allSitemapFiles, site.domain, site.baseUrl);
     const indexFilePath = path.join(siteDir, 'sitemap.xml');
     fs.writeFileSync(indexFilePath, indexXml, 'utf8');
-    console.log(` sitemap.xml تم إنشاؤه (يحتوي على ${allSitemapFiles.length} ملف)`);
-    
+    console.log(`sitemap.xml تم إنشاؤه (يحتوي على ${allSitemapFiles.length} ملف)`);
     const configPath = path.join(siteDir, 'config.json');
     fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
-    console.log(`  ✅ config.json تم إنشاؤه`);
+    console.log(`config.json تم إنشاؤه`);
   }
   
   console.log('\n تم الانتهاء بنجاح!');
