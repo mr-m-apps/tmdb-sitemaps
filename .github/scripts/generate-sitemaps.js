@@ -14,10 +14,7 @@ const SITES = [
     domain: 'aflampro.pp.ua',
     baseUrl: 'https://aflampro.pp.ua',
     routes: {
-      movie: '/movie/{id}',
-      tv: '/tv/{id}',
-      person: '/person/{id}',
-      company: '/company/{id}'
+      movie: '/movie/{id}'
     },
     staticPages: [
       { url: '/', priority: '1.0', changefreq: 'daily' },
@@ -158,7 +155,7 @@ function generateSitemapIndex(sitemapFiles, domain, baseUrl) {
   const urls = sitemapFiles.map(file => {
     const filePath = file.replace(domain + '/', '');
     return `  <sitemap>
-    <loc>${baseUrl}/sitemaps/${filePath}</loc>
+    <loc>${baseUrl}/api/sitemap/${filePath}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
   </sitemap>`;
   }).join('\n');
