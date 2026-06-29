@@ -6,11 +6,9 @@ const { pipeline } = require('stream');
 const { promisify } = require('util');
 const streamPipeline = promisify(pipeline);
 
-// ===== الإعدادات =====
-const SITEMAP_LIMIT = 40000; // أقل من حد جوجل 50,000
+const SITEMAP_LIMIT = 40000;
 const BASE_URL = 'https://files.tmdb.org/p/exports';
 
-// ===== إعدادات المواقع (عدلها حسب مواقعك) =====
 const SITES = [
   {
     domain: 'example1.com',
@@ -34,7 +32,6 @@ const SITES = [
   }
 ];
 
-// ===== الأدوات المساعدة =====
 function getToday() {
   const d = new Date();
   const mm = String(d.getMonth() + 1).padStart(2, '0');
@@ -53,8 +50,7 @@ async function downloadAndParse(fileName) {
   for await (const chunk of stream) {
     data += chunk.toString('utf8');
   }
-  
-  // كل سطر هو JSON
+
   return data.split('\n')
     .filter(line => line.trim())
     .map(line => JSON.parse(line));
@@ -92,13 +88,8 @@ ${urls}
 </sitemapindex>`;
 }
 
-// ===== الوظيفة الرئيسية =====
 async function main() {
   const today = getToday();
-  console.log(`📅 تاريخ اليوم: ${today}`);
-  
-  // 1. تحميل البيانات من TMDB
-  console.log('📥 تحميل ملفات TMDB...');
   
   const files = {
     movie: `movie_ids_${today}.json.gz`,
@@ -112,22 +103,20 @@ async function main() {
     try {
       console.log(`  - تحميل ${key}...`);
       data[key] = await downloadAndParse(fileName);
-      console.log(`    ✅ تم تحميل ${data[key].length} عنصر`);
+      console.log(` تم تحميل ${data[key].length} عنصر`);
     } catch (error) {
-      console.error(`  ❌ فشل تحميل ${key}:`, error.message);
+      console.error(` فشل تحميل ${key}:`, error.message);
       data[key] = [];
     }
   }
   
-  // 2. إنشاء المجلدات
   const sitemapsDir = path.join(process.cwd(), 'sitemaps');
   if (!fs.existsSync(sitemapsDir)) {
     fs.mkdirSync(sitemapsDir);
   }
   
-  // 3. معالجة كل موقع
   for (const site of SITES) {
-    console.log(`\n🏗️ معالجة الموقع: ${site.domain}`);
+    console.log(`\n معالجة الموقع: ${site.domain}`);
     
     const siteDir = path.join(sitemapsDir, site.domain);
     if (!fs.existsSync(siteDir)) {
@@ -142,33 +131,30 @@ async function main() {
       generatedAt: new Date().toISOString(),
       sitemaps: {}
     };
-    
-    // معالجة كل فئة (أفلام، مسلسلات، إلخ)
+  
     for (const [category, items] of Object.entries(data)) {
       if (items.length === 0) continue;
       
-      console.log(`  📂 فئة ${category}: ${items.length} عنصر`);
+      console.log(` فئة ${category}: ${items.length} عنصر`);
       
       const categoryDir = path.join(siteDir, category);
       if (!fs.existsSync(categoryDir)) {
         fs.mkdirSync(categoryDir);
       }
-      
-      // تقسيم إلى مجموعات 40,000
+    
       const chunks = [];
       for (let i = 0; i < items.length; i += SITEMAP_LIMIT) {
         chunks.push(items.slice(i, i + SITEMAP_LIMIT));
       }
       
-      console.log(`    📄 سيتم إنشاء ${chunks.length} ملف Sitemap`);
+      console.log(` سيتم إنشاء ${chunks.length} ملف Sitemap`);
       
       const sitemapFiles = [];
       for (let i = 0; i < chunks.length; i++) {
         const chunk = chunks[i];
         const fileName = `sitemap-${category}-${i + 1}.xml`;
         const filePath = path.join(categoryDir, fileName);
-        
-        // توليد XML
+      
         const xml = generateSiteMapXML(
           chunk,
           site.baseUrl,
@@ -176,7 +162,7 @@ async function main() {
         );
         
         fs.writeFileSync(filePath, xml, 'utf8');
-        console.log(`      ✅ ${fileName} (${chunk.length} رابط)`);
+        console.log(` ${fileName} (${chunk.length} رابط)`);
         
         sitemapFiles.push(`${site.domain}/${category}/${fileName}`);
         allSitemapFiles.push(`${site.domain}/${category}/${fileName}`);
@@ -185,19 +171,17 @@ async function main() {
       config.sitemaps[category] = sitemapFiles;
     }
     
-    // 4. إنشاء Sitemap Index
     const indexXml = generateSitemapIndex(allSitemapFiles, site.domain, site.baseUrl);
     const indexFilePath = path.join(siteDir, 'sitemap.xml');
     fs.writeFileSync(indexFilePath, indexXml, 'utf8');
-    console.log(`  ✅ sitemap.xml تم إنشاؤه (يحتوي على ${allSitemapFiles.length} ملف)`);
+    console.log(` sitemap.xml تم إنشاؤه (يحتوي على ${allSitemapFiles.length} ملف)`);
     
-    // 5. إنشاء ملف config.json
     const configPath = path.join(siteDir, 'config.json');
     fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
     console.log(`  ✅ config.json تم إنشاؤه`);
   }
   
-  console.log('\n🎉 تم الانتهاء بنجاح!');
+  console.log('\n تم الانتهاء بنجاح!');
 }
 
 main().catch(console.error);
