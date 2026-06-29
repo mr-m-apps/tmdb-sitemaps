@@ -2,12 +2,9 @@
   "domain": "aflampro.pp.ua",
   "baseUrl": "https://aflampro.pp.ua",
   "routes": {
-    "movie": "/movie/{id}",
-    "tv": "/tv/{id}",
-    "person": "/person/{id}",
-    "company": "/company/{id}"
+    "movie": "/movie/{id}"
   },
-  "generatedAt": "2026-06-29T16:52:12.947Z",
+  "generatedAt": "2026-06-29T17:24:22.258Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"

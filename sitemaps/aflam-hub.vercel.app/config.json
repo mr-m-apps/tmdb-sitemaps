@@ -7,7 +7,7 @@
     "person": "titles/person/{id}",
     "company": "titles/company/{id}"
   },
-  "generatedAt": "2026-06-29T16:52:17.687Z",
+  "generatedAt": "2026-06-29T17:24:27.227Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"
