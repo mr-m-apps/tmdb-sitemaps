@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { createGunzip } = require('zlib');
 
-const SITEMAP_LIMIT = 45000;
+const SITEMAP_LIMIT = 10000;
 const BASE_URL = 'https://files.tmdb.org/p/exports';
 
 const SITES = [
