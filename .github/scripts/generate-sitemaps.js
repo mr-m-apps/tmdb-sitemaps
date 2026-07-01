@@ -16,8 +16,8 @@ const SITES = [
       person: '/titles/person/{id}',
     },
     staticPages: [
-      { url: '/', priority: '1.0', changefreq: 'daily' },
-      { url: '/browse', priority: '0.9', changefreq: 'daily' },
+      { url: '/', priority: '0.9', changefreq: 'daily' },
+      { url: '/browse', priority: '0.8', changefreq: 'daily' },
       { url: '/search', priority: '0.8', changefreq: 'daily' },
       { url: '/favorite', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
@@ -66,8 +66,8 @@ const SITES = [
       person: '/titles/person/{id}',
     },
     staticPages: [
-      { url: '/', priority: '1.0', changefreq: 'daily' },
-      { url: '/browse', priority: '0.9', changefreq: 'daily' },
+      { url: '/', priority: '0.9', changefreq: 'daily' },
+      { url: '/browse', priority: '0.8', changefreq: 'daily' },
       { url: '/search', priority: '0.8', changefreq: 'daily' },
       { url: '/favorite', priority: '0.7', changefreq: 'weekly' },
       { url: '/titles/channels', priority: '0.7', changefreq: 'weekly' },
