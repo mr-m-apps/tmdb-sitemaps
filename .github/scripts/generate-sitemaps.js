@@ -58,8 +58,8 @@ const SITES = [
     ],
   },
   {
-    domain: 'aflam-hub.vercel.app',
-    baseUrl: 'https://aflam-hub.vercel.app',
+    domain: 'shahidnow.pp.ua',
+    baseUrl: 'https://shahidnow.pp.ua',
     routes: {
       movie: '/titles/movie/{id}',
       tv: '/titles/tv/{id}',
