@@ -57,8 +57,8 @@ const SITES = [
     ],
   },
   {
-    domain: 'shahidnow.pp.ua',
-    baseUrl: 'https://shahidnow.pp.ua',
+    domain: 'shahidnow.site',
+    baseUrl: 'https://shahidnow.site',
     routes: {
       movie: '/titles/movie/{id}',
       tv: '/titles/tv/{id}',
