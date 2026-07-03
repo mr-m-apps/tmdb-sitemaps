@@ -1,0 +1,10 @@
+{
+  "domain": "shahidnow.site",
+  "baseUrl": "https://shahidnow.site",
+  "generatedAt": "2026-07-03T05:32:52.096Z",
+  "sitemaps": {
+    "static": [
+      "sitemap-static.xml"
+    ]
+  }
+}
