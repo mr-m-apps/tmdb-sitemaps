@@ -1,7 +1,7 @@
 {
   "domain": "www.shahidnow.site",
   "baseUrl": "https://www.shahidnow.site",
-  "generatedAt": "2026-07-20T10:46:58.710Z",
+  "generatedAt": "2026-07-27T11:14:58.746Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"
@@ -639,7 +639,8 @@
       "person/sitemap-person-480.xml",
       "person/sitemap-person-481.xml",
       "person/sitemap-person-482.xml",
-      "person/sitemap-person-483.xml"
+      "person/sitemap-person-483.xml",
+      "person/sitemap-person-484.xml"
     ]
   }
 }
