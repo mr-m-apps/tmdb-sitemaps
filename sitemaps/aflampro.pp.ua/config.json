@@ -1,7 +1,7 @@
 {
   "domain": "aflampro.pp.ua",
   "baseUrl": "https://aflampro.pp.ua",
-  "generatedAt": "2026-08-24T08:41:31.418Z",
+  "generatedAt": "2026-08-31T15:45:53.741Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"
@@ -155,7 +155,8 @@
       "tv/sitemap-tv-20.xml",
       "tv/sitemap-tv-21.xml",
       "tv/sitemap-tv-22.xml",
-      "tv/sitemap-tv-23.xml"
+      "tv/sitemap-tv-23.xml",
+      "tv/sitemap-tv-24.xml"
     ],
     "person": [
       "person/sitemap-person-1.xml",
@@ -646,7 +647,8 @@
       "person/sitemap-person-486.xml",
       "person/sitemap-person-487.xml",
       "person/sitemap-person-488.xml",
-      "person/sitemap-person-489.xml"
+      "person/sitemap-person-489.xml",
+      "person/sitemap-person-490.xml"
     ]
   }
 }
