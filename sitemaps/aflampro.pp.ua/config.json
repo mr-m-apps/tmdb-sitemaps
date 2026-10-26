@@ -1,7 +1,7 @@
 {
   "domain": "aflampro.pp.ua",
   "baseUrl": "https://aflampro.pp.ua",
-  "generatedAt": "2026-10-19T15:13:15.906Z",
+  "generatedAt": "2026-10-26T14:47:24.654Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"
@@ -661,7 +661,9 @@
       "person/sitemap-person-497.xml",
       "person/sitemap-person-498.xml",
       "person/sitemap-person-499.xml",
-      "person/sitemap-person-500.xml"
+      "person/sitemap-person-500.xml",
+      "person/sitemap-person-501.xml",
+      "person/sitemap-person-502.xml"
     ]
   }
 }
