@@ -1,7 +1,7 @@
 {
   "domain": "www.shahidnow.site",
   "baseUrl": "https://www.shahidnow.site",
-  "generatedAt": "2026-11-02T17:42:24.283Z",
+  "generatedAt": "2026-11-16T17:48:02.189Z",
   "sitemaps": {
     "static": [
       "sitemap-static.xml"
@@ -133,7 +133,8 @@
       "movie/sitemap-movie-124.xml",
       "movie/sitemap-movie-125.xml",
       "movie/sitemap-movie-126.xml",
-      "movie/sitemap-movie-127.xml"
+      "movie/sitemap-movie-127.xml",
+      "movie/sitemap-movie-128.xml"
     ],
     "tv": [
       "tv/sitemap-tv-1.xml",
@@ -664,7 +665,15 @@
       "person/sitemap-person-500.xml",
       "person/sitemap-person-501.xml",
       "person/sitemap-person-502.xml",
-      "person/sitemap-person-503.xml"
+      "person/sitemap-person-503.xml",
+      "person/sitemap-person-504.xml",
+      "person/sitemap-person-505.xml",
+      "person/sitemap-person-506.xml",
+      "person/sitemap-person-507.xml",
+      "person/sitemap-person-508.xml",
+      "person/sitemap-person-509.xml",
+      "person/sitemap-person-510.xml",
+      "person/sitemap-person-511.xml"
     ]
   }
 }
